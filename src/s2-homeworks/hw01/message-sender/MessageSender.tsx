@@ -1,6 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react'
 import { message0 } from '../HW1'
 import s from './MessageSender.module.css'
+import styled from "@emotion/styled";
 
 // компонента, которая тестирует вашу компоненту (не изменять, any не трогать)
 const MessageSender = (props: any) => {
@@ -45,8 +46,8 @@ const MessageSender = (props: any) => {
                 <M key={'message' + m.id} message={m} />
             ))}
 
-            <div id={'hw1-send-message-form'} className={s.sendForm}>
-                <textarea
+            <StyleForm id={'hw1-send-message-form'} className={s.sendForm}>
+                <StyleTextArea
                     id={'hw1-textarea'}
                     className={s.textarea}
                     ref={textareaRef}
@@ -58,7 +59,7 @@ const MessageSender = (props: any) => {
                     onChange={onChange}
                     onKeyDown={onKeyDown}
                 />
-                <button
+                <StyleSendButton
                     id={'hw1-button'}
                     className={s.button}
 
@@ -67,10 +68,43 @@ const MessageSender = (props: any) => {
                     {/*текст кнопки могут изменить студенты*/}
                     Send
                     {/**/}
-                </button>
-            </div>
+                </StyleSendButton>
+            </StyleForm>
         </>
     )
 }
 
 export default MessageSender
+
+const StyleSendButton = styled.button`
+    width: 120px;
+    border-radius: 20px;
+    border-color: transparent;
+    color: white;
+    background-color: rgba(0, 102, 204, 1);
+    font-size: 16px;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    padding-inline: 10px;
+    height: 40px;
+`
+
+const StyleForm =styled.div`
+    display: flex;
+    justify-content: space-between;
+    gap: 44px;
+    align-items: flex-end;
+`
+
+const StyleTextArea = styled.textarea`
+    background-color: rgba(245, 247, 251, 1);
+    border-radius: 20px;
+    border-color: transparent;
+    font-size: 14px;
+    font-family:'Montserrat', sans-serif;
+    min-height: 40px;
+    width: 976px;
+    padding: 12px 0 11px 24px;
+    resize : none;
+    overflow: hidden;
+`

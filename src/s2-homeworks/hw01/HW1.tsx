@@ -1,9 +1,10 @@
 import React from 'react'
-import Message from './message/Message'
+import {Message} from './message/Message'
 import MessageSender from './message-sender/MessageSender'
 import s2 from '../../s1-main/App.module.css'
 import FriendMessage from './friend-message/FriendMessage'
 import avatar from './avatar.png'
+import styled from "@emotion/styled";
 
 /*
 * 1 - описать тип MessageType
@@ -53,20 +54,35 @@ export const friendMessage0: MessageType = {
 
 const HW1 = () => {
     return (
-        <div id={'hw1'}>
-            <div className={s2.hwTitle}>Homework #1</div>
+        <Main id={'hw1'}>
+            <TaskName className={s2.hwTitle}>Homework #1</TaskName>
             <div className={s2.hw}>
                 {/*проверка отображения (не менять)*/}
-                <div>
-                    <Message message={message0} />
-                    <FriendMessage message={friendMessage0} />
-                </div>
+                <MessageArea>
+                    <Message message={message0}/>
+                    <FriendMessage message={friendMessage0}/>
+                </MessageArea>
 
                 {/*для автоматической проверки дз (не менять)*/}
-                <MessageSender M={Message} />
+                <MessageSender M={Message}/>
             </div>
-        </div>
+        </Main>
     )
 }
 
 export default HW1
+
+
+const Main = styled.div`
+    padding: 70px;
+
+`
+const TaskName = styled.div`
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22px;
+`
+const MessageArea = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+`
